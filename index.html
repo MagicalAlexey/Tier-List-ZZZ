@@ -387,27 +387,8 @@
             white-space: nowrap;
         }
         /* Eye icon */
-        .eye-icon {
-            width: 16px;
-            height: 16px;
-            background: #009eec;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-        .expert-icon {
-            width: 16px;
-            height: 16px;
-            background: #ffa500;
-            border-radius: 3px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-        /* Tier movement arrows */
+        .eye-icon,
+        .expert-icon,
         .tier-arrow {
             width: 16px;
             height: 16px;
@@ -415,13 +396,30 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px; /* Чуть меньше контейнера для визуального центрирования */
             font-weight: bold;
+            line-height: 1; /* Убирает лишние отступы по вертикали */
+            text-align: center;
+            vertical-align: middle;
+            flex-shrink: 0; /* Предотвращает сжатие во flex-контейнерах */
         }
+
+        /* Цвета оставляем раздельно */
+        .eye-icon {
+            background: #009eec;
+            color: #fff;
+        }
+
+        .expert-icon {
+            background: #ffa500;
+            color: #fff;
+        }
+
         .tier-arrow.up {
             background: rgba(46, 213, 115, 0.9);
             color: #fff;
         }
+
         .tier-arrow.down {
             background: rgba(255, 71, 87, 0.9);
             color: #fff;
@@ -654,7 +652,8 @@
                                     />
                                 </div>
                                 <div class="badge-container">
-                                <div class="expert-icon">✮</div></div>
+                                    <div class="expert-icon">✮</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -803,10 +802,11 @@
             const matchesSearch = name.includes(searchTerm);
             const matchesRarity = activeFilters.rarity === "all" || rarity === activeFilters.rarity;
             const matchesElement = activeFilters.element === "all" || element === activeFilters.element;
-            const matchesSpec = activeFilters.specialization === "all" || specialization === activeFilters.specialization;
+            const matchesSpec =
+                activeFilters.specialization === "all" || specialization === activeFilters.specialization;
 
             if (matchesSearch && matchesRarity && matchesElement && matchesSpec) {
-                card.closest('.role-column')?.style.setProperty('display', 'flex', 'important');
+                card.closest(".role-column")?.style.setProperty("display", "flex", "important");
                 card.style.display = "block";
             } else {
                 card.style.display = "none";
@@ -822,7 +822,7 @@
     function resetFilters() {
         activeFilters = { rarity: "all", element: "all", specialization: "all" };
 
-        document.querySelectorAll(".filter-group").forEach(group => {
+        document.querySelectorAll(".filter-group").forEach((group) => {
             group.querySelectorAll(".filter-btn").forEach((btn) => {
                 if (btn.dataset.value === "all") {
                     btn.classList.add("active");
