@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZZZ Tier List - Zenless Zone Zero 2.6</title>
     <style>
         * {
@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
             min-height: 100vh;
@@ -87,7 +87,8 @@
             font-weight: bold;
             font-size: 14px;
         }
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             border-color: #009eec;
             background: #36373f;
         }
@@ -114,13 +115,15 @@
             border-color: #009eec;
             background: #36373f;
         }
-        .element-btn, .spec-btn {
+        .element-btn,
+        .spec-btn {
             font-size: 18px;
             padding: 0;
             width: 40px;
             height: 40px;
         }
-        .element-icon, .spec-icon {
+        .element-icon,
+        .spec-icon {
             width: 24px;
             height: 24px;
             border-radius: 4px;
@@ -130,7 +133,8 @@
             overflow: hidden;
             flex-shrink: 0;
         }
-        .element-icon img, .spec-icon img {
+        .element-icon img,
+        .spec-icon img {
             width: 20px;
             height: 20px;
             object-fit: contain;
@@ -206,15 +210,19 @@
         }
         .section-title::before,
         .section-title::after {
-            content: '';
+            content: "";
             position: absolute;
             top: 50%;
             width: 35%;
             height: 2px;
             background: currentColor;
         }
-        .section-title::before { left: 0; }
-        .section-title::after { right: 0; }
+        .section-title::before {
+            left: 0;
+        }
+        .section-title::after {
+            right: 0;
+        }
         .apex .section-title {
             color: #ef5350;
             background: rgba(239, 83, 80, 0.1);
@@ -245,12 +253,30 @@
             font-weight: 700;
             flex-shrink: 0;
         }
-        .tier-t0 .tier-label { background: #ef5350; color: #fff; }
-        .tier-t05 .tier-label { background: #ec6563; color: #fff; }
-        .tier-t1 .tier-label { background: #ffa967; color: #000; }
-        .tier-t15 .tier-label { background: #ffbe7c; color: #000; }
-        .tier-t2 .tier-label { background: #bfff7f; color: #000; }
-        .tier-t3 .tier-label { background: #76f8f8; color: #000; }
+        .tier-t0 .tier-label {
+            background: #ef5350;
+            color: #fff;
+        }
+        .tier-t05 .tier-label {
+            background: #ec6563;
+            color: #fff;
+        }
+        .tier-t1 .tier-label {
+            background: #ffa967;
+            color: #000;
+        }
+        .tier-t15 .tier-label {
+            background: #ffbe7c;
+            color: #000;
+        }
+        .tier-t2 .tier-label {
+            background: #bfff7f;
+            color: #000;
+        }
+        .tier-t3 .tier-label {
+            background: #76f8f8;
+            color: #000;
+        }
         .tier-content {
             flex: 1;
             display: grid;
@@ -269,32 +295,29 @@
             flex-wrap: wrap;
             gap: 8px;
         }
-        .character-card {
+        /* ИСПРАВЛЕНО: character-image вместо character-card */
+        .character-image {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 100px !important;
+            height: 100px !important;
             border-radius: 6px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.2s;
             border: 2px solid #484950;
-            flex-shrink: 0; /* FIX: предотвращает сжатие карточки */
+            flex-shrink: 0;
+            display: block;
         }
-        .character-card:hover {
+        .character-image:hover {
             transform: scale(1.1);
             z-index: 10;
             border-color: #009eec;
-        }
-        .character-image {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
         }
         .character-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
         /* Element icon - FIXED SIZE 20x20px */
         .element-icon-small {
@@ -309,8 +332,9 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             flex-shrink: 0;
+            z-index: 2;
         }
         .element-icon-small img {
             width: 16px;
@@ -331,8 +355,9 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             flex-shrink: 0;
+            z-index: 2;
         }
         .spec-icon-small img {
             width: 16px;
@@ -349,6 +374,7 @@
             flex-direction: column;
             gap: 3px;
             align-items: flex-end;
+            z-index: 2;
         }
         /* Rank badge (P6) */
         .rank-badge {
@@ -365,6 +391,16 @@
             width: 16px;
             height: 16px;
             background: #009eec;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .expert-icon {
+            width: 16px;
+            height: 16px;
+            background: #ffa500;
             border-radius: 3px;
             display: flex;
             align-items: center;
@@ -423,22 +459,7 @@
             .role-headers {
                 grid-template-columns: 1fr;
             }
-            /* FIX: Убрано изменение размера карточки — остаётся 100x100 */
-
-            /* Иконки внутри карточки остаются тех же размеров,
-               но при необходимости можно немного уменьшить отступы */
-            .element-icon-small {
-                top: 4px;
-                left: 4px;
-            }
-            .spec-icon-small {
-                top: 4px;
-                left: 28px;
-            }
-            .badge-container {
-                top: 4px;
-                right: 4px;
-            }
+            /* FIX: character-image остаётся 100x100 на всех устройствах */
         }
     </style>
 </head>
@@ -451,43 +472,64 @@
     <!-- Top Filter Bar -->
     <div class="filter-bar">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search characters...">
+            <input type="text" id="searchInput" placeholder="Search characters..." />
             <span class="clear-search" onclick="clearSearch()">✕</span>
         </div>
         <div class="filter-group">
             <button class="filter-btn active" data-filter="rarity" data-value="all">*</button>
             <button class="filter-btn rarity-A" data-filter="rarity" data-value="A">
-                <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5c/Icon_AgentRank_A.png/revision/latest?cb=20240914135957" alt="A">
+                <img
+                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5c/Icon_AgentRank_A.png/revision/latest?cb=20240914135957"
+                        alt="A"
+                />
             </button>
             <button class="filter-btn rarity-S" data-filter="rarity" data-value="S">
-                <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d0/Icon_AgentRank_S.png/revision/latest?cb=20240914140011" alt="S">
+                <img
+                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d0/Icon_AgentRank_S.png/revision/latest?cb=20240914140011"
+                        alt="S"
+                />
             </button>
         </div>
         <div class="filter-group">
             <button class="filter-btn active element-btn" data-filter="element" data-value="all">*</button>
             <button class="filter-btn element-btn" data-filter="element" data-value="electric">
                 <div class="element-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/1/1c/Icon_Electric.png/revision/latest?cb=20251231182037" alt="Electric">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/1/1c/Icon_Electric.png/revision/latest?cb=20251231182037"
+                            alt="Electric"
+                    />
                 </div>
             </button>
             <button class="filter-btn element-btn" data-filter="element" data-value="physical">
                 <div class="element-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902" alt="Physical">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902"
+                            alt="Physical"
+                    />
                 </div>
             </button>
             <button class="filter-btn element-btn" data-filter="element" data-value="fire">
                 <div class="element-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0a/Icon_Fire.png/revision/latest?cb=20251231181922" alt="Fire">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0a/Icon_Fire.png/revision/latest?cb=20251231181922"
+                            alt="Fire"
+                    />
                 </div>
             </button>
             <button class="filter-btn element-btn" data-filter="element" data-value="ice">
                 <div class="element-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/52/Icon_Ice.png/revision/latest?cb=20251231181955" alt="Ice">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/52/Icon_Ice.png/revision/latest?cb=20251231181955"
+                            alt="Ice"
+                    />
                 </div>
             </button>
             <button class="filter-btn element-btn" data-filter="element" data-value="ether">
                 <div class="element-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053" alt="Ether">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"
+                            alt="Ether"
+                    />
                 </div>
             </button>
         </div>
@@ -495,53 +537,61 @@
             <button class="filter-btn active spec-btn" data-filter="specialization" data-value="all">*</button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="attack">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633" alt="Attack">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                            alt="Attack"
+                    />
                 </div>
             </button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="stun">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653" alt="Stun">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653"
+                            alt="Stun"
+                    />
                 </div>
             </button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="support">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754" alt="Support">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                            alt="Support"
+                    />
                 </div>
             </button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="anomaly">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Anomaly.png/revision/latest?cb=20240704113735" alt="Anomaly">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Anomaly.png/revision/latest?cb=20240704113735"
+                            alt="Anomaly"
+                    />
                 </div>
             </button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="defense">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/fb/Icon_Defense.png/revision/latest?cb=20240704113713" alt="Defense">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/fb/Icon_Defense.png/revision/latest?cb=20240704113713"
+                            alt="Defense"
+                    />
                 </div>
             </button>
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="decay">
                 <div class="spec-icon">
-                    <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454" alt="Rupture">
+                    <img
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454"
+                            alt="Rupture"
+                    />
                 </div>
             </button>
         </div>
-        <button class="reset-btn" onclick="resetFilters()">
-            <span>✕</span> Reset
-        </button>
+        <button class="reset-btn" onclick="resetFilters()"><span>✕</span> Reset</button>
     </div>
     <!-- Role Headers (4 columns) -->
     <div class="role-headers">
-        <div class="role-header role-dps">
-            DPS
-        </div>
-        <div class="role-header role-support-dps">
-            SUPPORT DPS
-        </div>
-        <div class="role-header role-stun">
-            STUN
-        </div>
-        <div class="role-header role-support">
-            SUPPORT
-        </div>
+        <div class="role-header role-dps">DPS</div>
+        <div class="role-header role-support-dps">SUPPORT DPS</div>
+        <div class="role-header role-stun">STUN</div>
+        <div class="role-header role-support">SUPPORT</div>
     </div>
     <!-- APEX CHARACTERS -->
     <div class="tier-section apex">
@@ -552,15 +602,59 @@
             <div class="tier-content">
                 <div class="role-column" data-role="dps">
                     <div class="characters-grid">
-                        <div class="character-image rarity-S">
-                            <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/9/94/Agent_Ye_Shunguang_Icon.png/revision/latest?cb=20251230034826" alt="Ye_Shunguang">
-                            <div class="element-icon-small">
-                                <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/3e/Icon_Honed_Edge.png/revision/latest?cb=20251221033930" alt="Ice">
+                        <div
+                                class="character-card"
+                                data-name="ye_shunguang"
+                                data-rarity="S"
+                                data-element="physical"
+                                data-specialization="attack"
+                        >
+                            <div class="character-image rarity-S">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/9/94/Agent_Ye_Shunguang_Icon.png/revision/latest?cb=20251230034826"
+                                        alt="Ye_Shunguang"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/3e/Icon_Honed_Edge.png/revision/latest?cb=20251221033930"
+                                            alt="Physical"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                                            alt="Attack"
+                                    />
+                                </div>
+                                <div class="badge-container"></div>
                             </div>
-                            <div class="spec-icon-small">
-                                <img src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633" alt="Attack">
-                            </div>
-                            <div class="badge-container">
+                        </div>
+                        <div
+                                class="character-card"
+                                data-name="yixuan"
+                                data-rarity="S"
+                                data-element="ether"
+                                data-specialization="decay"
+                        >
+                            <div class="character-image rarity-S">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/f7/Agent_Yixuan_Icon.png/revision/latest?cb=20250609032616"
+                                        alt="Yixuan"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/31/Icon_Auric_Ink.png/revision/latest?cb=20251231183136"
+                                            alt="Auric_Ink"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454"
+                                            alt="Rupture"
+                                    />
+                                </div>
+                                <div class="badge-container">
+                                <div class="expert-icon">✮</div></div>
                             </div>
                         </div>
                     </div>
@@ -673,62 +767,76 @@
     </div>
 </div>
 <script>
-    // Filter functionality
     let activeFilters = {
-        rarity: 'all',
-        element: 'all',
-        specialization: 'all'
+        rarity: "all",
+        element: "all",
+        specialization: "all",
     };
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+
+    document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
             const filterType = this.dataset.filter;
             const filterValue = this.dataset.value;
-            // Update active button
-            this.parentElement.querySelectorAll('.filter-btn').forEach(b => {
-                b.classList.remove('active');
+
+            // Снимаем active только внутри той же группы фильтров
+            this.parentElement.querySelectorAll(".filter-btn").forEach((b) => {
+                b.classList.remove("active");
             });
-            this.classList.add('active');
-            // Update filter
+            this.classList.add("active");
+
             activeFilters[filterType] = filterValue;
             applyFilters();
         });
     });
+
     function applyFilters() {
-        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-        const cards = document.querySelectorAll('.character-card');
-        cards.forEach(card => {
-            const name = card.dataset.name || '';
-            const rarity = card.dataset.rarity || '';
-            const element = card.dataset.element || '';
-            const specialization = card.dataset.specialization || '';
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        // ✅ ИСПРАВЛЕНО: .character-card вместо .character-image
+        const cards = document.querySelectorAll(".character-card");
+
+        cards.forEach((card) => {
+            const name = card.dataset.name || "";
+            const rarity = card.dataset.rarity || "";
+            const element = card.dataset.element || "";
+            const specialization = card.dataset.specialization || "";
+
             const matchesSearch = name.includes(searchTerm);
-            const matchesRarity = activeFilters.rarity === 'all' || rarity === activeFilters.rarity;
-            const matchesElement = activeFilters.element === 'all' || element === activeFilters.element;
-            const matchesSpec = activeFilters.specialization === 'all' || specialization === activeFilters.specialization;
+            const matchesRarity = activeFilters.rarity === "all" || rarity === activeFilters.rarity;
+            const matchesElement = activeFilters.element === "all" || element === activeFilters.element;
+            const matchesSpec = activeFilters.specialization === "all" || specialization === activeFilters.specialization;
+
             if (matchesSearch && matchesRarity && matchesElement && matchesSpec) {
-                card.style.display = 'block';
+                card.closest('.role-column')?.style.setProperty('display', 'flex', 'important');
+                card.style.display = "block";
             } else {
-                card.style.display = 'none';
+                card.style.display = "none";
             }
         });
     }
+
     function clearSearch() {
-        document.getElementById('searchInput').value = '';
+        document.getElementById("searchInput").value = "";
         applyFilters();
     }
+
     function resetFilters() {
-        activeFilters = { rarity: 'all', element: 'all', specialization: 'all' };
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            if (btn.dataset.value === 'all') {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
+        activeFilters = { rarity: "all", element: "all", specialization: "all" };
+
+        document.querySelectorAll(".filter-group").forEach(group => {
+            group.querySelectorAll(".filter-btn").forEach((btn) => {
+                if (btn.dataset.value === "all") {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+            });
         });
-        document.getElementById('searchInput').value = '';
+
+        document.getElementById("searchInput").value = "";
         applyFilters();
     }
-    document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+    document.getElementById("searchInput").addEventListener("input", applyFilters);
 </script>
 </body>
 </html>
