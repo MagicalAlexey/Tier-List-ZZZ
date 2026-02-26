@@ -241,8 +241,10 @@
             margin-bottom: 10px;
             background: #2c2d33;
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible !important;
             border: 2px solid #33343a;
+            position: relative;
+            z-index: 1;
         }
         .tier-label {
             width: 80px;
@@ -283,25 +285,31 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             padding: 10px;
+            overflow: visible !important;
         }
         .role-column {
             background: rgba(0, 0, 0, 0.2);
             border-radius: 6px;
             padding: 10px;
             min-height: 120px;
+            overflow: visible !important;
         }
         .characters-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            overflow: visible !important;
         }
-        /* ИСПРАВЛЕНО: character-image вместо character-card */
+        .character-card {
+            position: relative;
+            z-index: 1;
+        }
         .character-image {
             position: relative;
             width: 100px !important;
             height: 100px !important;
             border-radius: 6px;
-            overflow: hidden;
+            overflow: visible !important;
             cursor: pointer;
             transition: transform 0.2s;
             border: 2px solid #484950;
@@ -310,7 +318,7 @@
         }
         .character-image:hover {
             transform: scale(1.1);
-            z-index: 10;
+            z-index: 50;
             border-color: #009eec;
         }
         .character-image img {
@@ -385,6 +393,7 @@
             font-size: 9px;
             font-weight: bold;
             white-space: nowrap;
+            cursor: help;
         }
         /* Eye icon */
         .eye-icon,
@@ -396,15 +405,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px; /* Чуть меньше контейнера для визуального центрирования */
+            font-size: 14px;
             font-weight: bold;
-            line-height: 1; /* Убирает лишние отступы по вертикали */
+            line-height: 1;
             text-align: center;
             vertical-align: middle;
-            flex-shrink: 0; /* Предотвращает сжатие во flex-контейнерах */
+            flex-shrink: 0;
+            cursor: help;
+            position: relative;
         }
 
-        /* Цвета оставляем раздельно */
         .eye-icon {
             background: #009eec;
             color: #fff;
@@ -424,6 +434,140 @@
             background: rgba(255, 71, 87, 0.9);
             color: #fff;
         }
+
+        /* ========== TOOLTIP STYLES - ТОЛЬКО ДЛЯ BADGE-CONTAINER ========== */
+
+        /* Тултипы для иконок в badge-container (правый верхний угол) - ПОКАЗЫВАЕМ СНИЗУ */
+        .badge-container [data-tooltip] {
+            position: relative;
+        }
+
+        .badge-container [data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            /* Показываем СНИЗУ от иконки, чтобы не перекрывать заголовки секций */
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: rgba(26, 27, 30, 0.98);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition:
+                opacity 0.15s ease,
+                transform 0.15s ease;
+            z-index: 2000;
+            pointer-events: none;
+            border: 1px solid #555;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .badge-container [data-tooltip]::after {
+            content: "";
+            position: absolute;
+            /* Стрелочка сверху, указывающая на иконку */
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            border: 5px solid transparent;
+            border-bottom-color: rgba(26, 27, 30, 0.98);
+            opacity: 0;
+            visibility: hidden;
+            transition:
+                opacity 0.15s ease,
+                transform 0.15s ease;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .badge-container [data-tooltip]:hover::before,
+        .badge-container [data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        .badge-container [data-tooltip]:hover::after {
+            transform: translateX(-50%) translateY(4px);
+        }
+
+        /* Тултипы для rank-badge (тоже в badge-container) */
+        .rank-badge[data-tooltip] {
+            position: relative;
+        }
+
+        .rank-badge[data-tooltip]::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: rgba(26, 27, 30, 0.98);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition:
+                opacity 0.15s ease,
+                transform 0.15s ease;
+            z-index: 2000;
+            pointer-events: none;
+            border: 1px solid #555;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .rank-badge[data-tooltip]::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            border: 5px solid transparent;
+            border-bottom-color: rgba(26, 27, 30, 0.98);
+            opacity: 0;
+            visibility: hidden;
+            transition:
+                opacity 0.15s ease,
+                transform 0.15s ease;
+            z-index: 2000;
+            pointer-events: none;
+        }
+
+        .rank-badge[data-tooltip]:hover::before,
+        .rank-badge[data-tooltip]:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        .rank-badge[data-tooltip]:hover::after {
+            transform: translateX(-50%) translateY(4px);
+        }
+
+        /* Адаптив для тултипов на мобильных */
+        @media (max-width: 768px) {
+            .badge-container [data-tooltip]::before,
+            .rank-badge[data-tooltip]::before {
+                font-size: 10px;
+                padding: 5px 8px;
+                white-space: normal;
+                max-width: 150px;
+            }
+        }
+
         /* Rarity backgrounds for character image placeholder */
         .rarity-A {
             background: linear-gradient(135deg, #b263e1 0%, #8c37bd 100%);
@@ -457,7 +601,6 @@
             .role-headers {
                 grid-template-columns: 1fr;
             }
-            /* FIX: character-image остаётся 100x100 на всех устройствах */
         }
     </style>
 </head>
@@ -477,13 +620,13 @@
             <button class="filter-btn active" data-filter="rarity" data-value="all">*</button>
             <button class="filter-btn rarity-A" data-filter="rarity" data-value="A">
                 <img
-                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5c/Icon_AgentRank_A.png/revision/latest?cb=20240914135957"
+                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5c/Icon_AgentRank_A.png/revision/latest?cb=20240914135957  "
                         alt="A"
                 />
             </button>
             <button class="filter-btn rarity-S" data-filter="rarity" data-value="S">
                 <img
-                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d0/Icon_AgentRank_S.png/revision/latest?cb=20240914140011"
+                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d0/Icon_AgentRank_S.png/revision/latest?cb=20240914140011  "
                         alt="S"
                 />
             </button>
@@ -493,7 +636,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="electric">
                 <div class="element-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/1/1c/Icon_Electric.png/revision/latest?cb=20251231182037"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/1/1c/Icon_Electric.png/revision/latest?cb=20251231182037  "
                             alt="Electric"
                     />
                 </div>
@@ -501,7 +644,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="physical">
                 <div class="element-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902  "
                             alt="Physical"
                     />
                 </div>
@@ -509,7 +652,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="fire">
                 <div class="element-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0a/Icon_Fire.png/revision/latest?cb=20251231181922"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0a/Icon_Fire.png/revision/latest?cb=20251231181922  "
                             alt="Fire"
                     />
                 </div>
@@ -517,7 +660,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="ice">
                 <div class="element-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/52/Icon_Ice.png/revision/latest?cb=20251231181955"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/52/Icon_Ice.png/revision/latest?cb=20251231181955  "
                             alt="Ice"
                     />
                 </div>
@@ -525,7 +668,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="ether">
                 <div class="element-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053  "
                             alt="Ether"
                     />
                 </div>
@@ -536,7 +679,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="attack">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633  "
                             alt="Attack"
                     />
                 </div>
@@ -544,7 +687,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="stun">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653  "
                             alt="Stun"
                     />
                 </div>
@@ -552,7 +695,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="support">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754  "
                             alt="Support"
                     />
                 </div>
@@ -560,7 +703,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="anomaly">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Anomaly.png/revision/latest?cb=20240704113735"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Anomaly.png/revision/latest?cb=20240704113735  "
                             alt="Anomaly"
                     />
                 </div>
@@ -568,7 +711,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="defense">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/fb/Icon_Defense.png/revision/latest?cb=20240704113713"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/fb/Icon_Defense.png/revision/latest?cb=20240704113713  "
                             alt="Defense"
                     />
                 </div>
@@ -576,7 +719,7 @@
             <button class="filter-btn spec-btn" data-filter="specialization" data-value="decay">
                 <div class="spec-icon">
                     <img
-                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454"
+                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454  "
                             alt="Rupture"
                     />
                 </div>
@@ -609,18 +752,18 @@
                         >
                             <div class="character-image rarity-S">
                                 <img
-                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/9/94/Agent_Ye_Shunguang_Icon.png/revision/latest?cb=20251230034826"
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/9/94/Agent_Ye_Shunguang_Icon.png/revision/latest?cb=20251230034826  "
                                         alt="Ye_Shunguang"
                                 />
                                 <div class="element-icon-small">
                                     <img
-                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/3e/Icon_Honed_Edge.png/revision/latest?cb=20251221033930"
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/3e/Icon_Honed_Edge.png/revision/latest?cb=20251221033930  "
                                             alt="Physical"
                                     />
                                 </div>
                                 <div class="spec-icon-small">
                                     <img
-                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633  "
                                             alt="Attack"
                                     />
                                 </div>
@@ -636,36 +779,290 @@
                         >
                             <div class="character-image rarity-S">
                                 <img
-                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/f7/Agent_Yixuan_Icon.png/revision/latest?cb=20250609032616"
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/f7/Agent_Yixuan_Icon.png/revision/latest?cb=20250609032616  "
                                         alt="Yixuan"
                                 />
                                 <div class="element-icon-small">
                                     <img
-                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/31/Icon_Auric_Ink.png/revision/latest?cb=20251231183136"
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/31/Icon_Auric_Ink.png/revision/latest?cb=20251231183136  "
                                             alt="Auric_Ink"
                                     />
                                 </div>
                                 <div class="spec-icon-small">
                                     <img
-                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454"
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/e/ef/Icon_Rupture.png/revision/latest?cb=20250606203454  "
                                             alt="Rupture"
                                     />
                                 </div>
                                 <div class="badge-container">
-                                    <div class="expert-icon">✮</div>
+                                    <div class="expert-icon" data-tooltip="Tag: Expert">✮</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="character-card"
+                                data-name="miyabi"
+                                data-rarity="S"
+                                data-element="ether"
+                                data-specialization="decay"
+                        >
+                            <div class="character-image rarity-S">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/9/94/Agent_Hoshimi_Miyabi_Icon.png/revision/latest?cb=20251124024758"
+                                        alt="Miyabi"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/8/88/Icon_Frost.png/revision/latest?cb=20251231201722"
+                                            alt="Frozen"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Anomaly.png/revision/latest?cb=20240704113735"
+                                            alt="Anomaly"
+                                    />
+                                </div>
+                                <div class="badge-container">
+                                    <div class="expert-icon" data-tooltip="Tag: Expert">✮</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="role-column" data-role="support-dps">
-                    <div class="characters-grid"></div>
+                    <div class="characters-grid">
+                    <div
+                            class="character-card"
+                            data-name="orphie_and_magus"
+                            data-rarity="S"
+                            data-element="fire"
+                            data-specialization="attack"
+                    >
+                        <div class="character-image rarity-S">
+                            <img
+                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/6/63/Agent_Orphie_Magnusson_%26_Magus_Icon.png/revision/latest?cb=20250908105854"
+                                    alt="Orphie_And_Magus"
+                            />
+                            <div class="element-icon-small">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0a/Icon_Fire.png/revision/latest?cb=20251231181922"
+                                        alt="Fire"
+                                />
+                            </div>
+                            <div class="spec-icon-small">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                                        alt="Attack"
+                                />
+                            </div>
+                            <div class="badge-container">
+                                <div class="eye-icon" data-tooltip="Tag: Review">👁</div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="role-column" data-role="stun">
-                    <div class="characters-grid"></div>
+                    <div class="characters-grid">
+                    <div
+                            class="character-card"
+                            data-name="dialyn"
+                            data-rarity="S"
+                            data-element="physical"
+                            data-specialization="stun"
+                    >
+                        <div class="character-image rarity-S">
+                            <img
+                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/25/Agent_Dialyn_Icon.png/revision/latest?cb=20251126105936"
+                                    alt="Dialyn"
+                            />
+                            <div class="element-icon-small">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902"
+                                        alt="Physical"
+                                />
+                            </div>
+                            <div class="spec-icon-small">
+                                <img
+                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653"
+                                        alt="Stun"
+                                />
+                            </div>
+                            <div class="badge-container"></div>
+                        </div>
+                    </div>
+<!--                    <div-->
+<!--                            class="character-card"-->
+<!--                            data-name="nangong"-->
+<!--                            data-rarity="S"-->
+<!--                            data-element="ether"-->
+<!--                            data-specialization="stun"-->
+<!--                    >-->
+<!--                        <div class="character-image rarity-S">-->
+<!--                            <img-->
+<!--                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/a/a3/Agent_Nangong_Yu_Icon.png/revision/latest?cb=20260212043127"-->
+<!--                                    alt="Nangong"-->
+<!--                            />-->
+<!--                            <div class="element-icon-small">-->
+<!--                                <img-->
+<!--                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"-->
+<!--                                        alt="Ether"-->
+<!--                                />-->
+<!--                            </div>-->
+<!--                            <div class="spec-icon-small">-->
+<!--                                <img-->
+<!--                                        src="https://static.wikia.nocookie.net/zenless-zone-zero/images/5/53/Icon_Stun.png/revision/latest?cb=20240704113653"-->
+<!--                                        alt="Stun"-->
+<!--                                />-->
+<!--                            </div>-->
+<!--                            <div class="badge-container">-->
+<!--                                <div class="eye-icon" data-tooltip="Tag: Review">👁</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        </div>-->
+                    </div>
                 </div>
                 <div class="role-column" data-role="support">
-                    <div class="characters-grid"></div>
+                    <div class="characters-grid">
+                        <div class="characters-grid">
+                            <div
+                                    class="character-card"
+                                    data-name="astra"
+                                    data-rarity="S"
+                                    data-element="ether"
+                                    data-specialization="support"
+                            >
+                                <div class="character-image rarity-S">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/b/b8/Agent_Astra_Yao_Icon.png/revision/latest?cb=20251125002054"
+                                            alt="Astra"
+                                    />
+                                    <div class="element-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"
+                                                alt="Ether"
+                                        />
+                                    </div>
+                                    <div class="spec-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                                                alt="Support"
+                                        />
+                                    </div>
+                                    <div class="badge-container"></div>
+                                    </div>
+                                </div>
+                            <div
+                                    class="character-card"
+                                    data-name="yuzuha"
+                                    data-rarity="S"
+                                    data-element="physical"
+                                    data-specialization="support"
+                            >
+                                <div class="character-image rarity-S">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/fc/Agent_Ukinami_Yuzuha_Icon.png/revision/latest?cb=20250716042038"
+                                            alt="Yuzuha"
+                                    />
+                                    <div class="element-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902"
+                                                alt="Physical"
+                                        />
+                                    </div>
+                                    <div class="spec-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                                                alt="Support"
+                                        />
+                                    </div>
+                                    <div class="badge-container"></div>
+                                </div>
+                            </div>
+                            <div
+                                    class="character-card"
+                                    data-name="sunna"
+                                    data-rarity="S"
+                                    data-element="physical"
+                                    data-specialization="support"
+                            >
+                                <div class="character-image rarity-S">
+                                    <img
+                                            src="https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0f/Agent_Sunna_Icon.png/revision/latest?cb=20260207040930"
+                                            alt="Sunna"
+                                    />
+                                    <div class="element-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/c/ce/Icon_Physical.png/revision/latest?cb=20251231181902"
+                                                alt="Physical"
+                                        />
+                                    </div>
+                                    <div class="spec-icon-small">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                                                alt="Support"
+                                        />
+                                    </div>
+                                    <div class="badge-container"></div>
+                                </div></div>
+                                <div
+                                        class="character-card"
+                                        data-name="lucia"
+                                        data-rarity="S"
+                                        data-element="ether"
+                                        data-specialization="support"
+                                >
+                                    <div class="character-image rarity-S">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/f/ff/Agent_Lucia_Elowen_Icon.png/revision/latest?cb=20251015235816"
+                                                alt="Lucia"
+                                        />
+                                        <div class="element-icon-small">
+                                            <img
+                                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"
+                                                    alt="Ether"
+                                            />
+                                        </div>
+                                        <div class="spec-icon-small">
+                                            <img
+                                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2f/Icon_Support.png/revision/latest?cb=20240704113754"
+                                                    alt="Support"
+                                            />
+                                        </div>
+                                        <div class="badge-container"></div>
+                                </div></div>
+                                <div
+                                        class="character-card"
+                                        data-name="nicole"
+                                        data-rarity="A"
+                                        data-element="ether"
+                                        data-specialization="support"
+                                >
+                                    <div class="character-image rarity-A">
+                                        <img
+                                                src="https://static.wikia.nocookie.net/zenless-zone-zero/images/2/21/Agent_Nicole_Demara_Icon.png/revision/latest?cb=20241226184348"
+                                                alt="Nicole"
+                                        />
+                                        <div class="element-icon-small">
+                                            <img
+                                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Icon_Ether.png/revision/latest?cb=20251231182053"
+                                                    alt="Ether"
+                                            />
+                                        </div>
+                                        <div class="spec-icon-small">
+                                            <img
+                                                    src="https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Icon_Attack.png/revision/latest?cb=20240704113633"
+                                                    alt="Support"
+                                            />
+                                        </div>
+                                        <div class="badge-container">
+                                            <div class="expert-icon" data-tooltip="Tag: Expert">✮</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -777,7 +1174,6 @@
             const filterType = this.dataset.filter;
             const filterValue = this.dataset.value;
 
-            // Снимаем active только внутри той же группы фильтров
             this.parentElement.querySelectorAll(".filter-btn").forEach((b) => {
                 b.classList.remove("active");
             });
@@ -790,7 +1186,6 @@
 
     function applyFilters() {
         const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-        // ✅ ИСПРАВЛЕНО: .character-card вместо .character-image
         const cards = document.querySelectorAll(".character-card");
 
         cards.forEach((card) => {
