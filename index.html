@@ -304,6 +304,62 @@
         position: relative;
         z-index: 1;
         }
+        /* Tooltip for character card */
+        .character-card[data-tags] {
+        position: relative;
+        }
+        .character-card[data-tags]::before {
+        content: attr(data-tooltip-content);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-6px);
+        background: rgba(26, 27, 30, 0.98);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: pre-line;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+        border: 1px solid #555;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        text-align: left;
+        min-width: 180px;
+        max-width: 250px;
+        line-height: 1.5;
+        }
+        .character-card[data-tags]::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(2px);
+        border: 6px solid transparent;
+        border-top-color: rgba(26, 27, 30, 0.98);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+        z-index: 1000;
+        pointer-events: none;
+        }
+        .character-card[data-tags]:hover::before,
+        .character-card[data-tags]:hover::after {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-2px);
+        }
+        .character-card[data-tags]:hover::after {
+        transform: translateX(-50%) translateY(-4px);
+        }
         .character-image {
         position: relative;
         width: 100px !important;
@@ -1877,6 +1933,63 @@
     applyFilters();
     }
     document.getElementById("searchInput").addEventListener("input", applyFilters);
+
+    // Character data with tags and efficiency index
+    const characterData = {
+        "ye_shunguang": { tags: ["Honed Edge", "Attack"], efficiency: "S+" },
+        "yixuan": { tags: ["Auric Ink", "Decay", "Expert"], efficiency: "S+" },
+        "miyabi": { tags: ["Ice", "Anomaly", "Expert"], efficiency: "S" },
+        "dialyn": { tags: ["Physical", "Stun"], efficiency: "S" },
+        "astra": { tags: ["Ether", "Support"], efficiency: "S" },
+        "yuzuha": { tags: ["Physical", "Support"], efficiency: "S" },
+        "sunna": { tags: ["Physical", "Support"], efficiency: "S" },
+        "lucia": { tags: ["Ether", "Support"], efficiency: "S" },
+        "nicole": { tags: ["Ether", "Support"], efficiency: "A" },
+        "alice": { tags: ["Physical", "Anomaly"], efficiency: "S" },
+        "sanby": { tags: ["Electric", "Attack"], efficiency: "S" },
+        "seed": { tags: ["Electric", "Attack"], efficiency: "S" },
+        "harumasa": { tags: ["Electric", "Attack"], efficiency: "S" },
+        "evelyn": { tags: ["Fire", "Attack"], efficiency: "S" },
+        "banyue": { tags: ["Fire", "Decay"], efficiency: "S" },
+        "yidhari": { tags: ["Ice", "Decay"], efficiency: "S" },
+        "orphie_and_magus": { tags: ["Fire", "Attack"], efficiency: "S" },
+        "vivian": { tags: ["Ether", "Anomaly"], efficiency: "S" },
+        "burnice": { tags: ["Fire", "Anomaly"], efficiency: "S" },
+        "yanagi": { tags: ["Electric", "Anomaly"], efficiency: "S" },
+        "jufufu": { tags: ["Fire", "Stun"], efficiency: "S" },
+        "lighter": { tags: ["Fire", "Stun"], efficiency: "S" },
+        "trigger": { tags: ["Electric", "Stun"], efficiency: "S" },
+        "zhao": { tags: ["Ice", "Support"], efficiency: "S" },
+        "panyinhu": { tags: ["Physical", "Support"], efficiency: "A" },
+        "ellen": { tags: ["Ice", "Attack"], efficiency: "S" },
+        "hugo": { tags: ["Ice", "Attack"], efficiency: "S" },
+        "manato": { tags: ["Fire", "Decay"], efficiency: "A" },
+        "soldier11": { tags: ["Fire", "Attack"], efficiency: "S" },
+        "jane": { tags: ["Physical", "Anomaly"], efficiency: "S" },
+        "piper": { tags: ["Physical", "Anomaly"], efficiency: "A" },
+        "lycaon": { tags: ["Ice", "Stun"], efficiency: "S" },
+        "qingyi": { tags: ["Electric", "Stun"], efficiency: "S" },
+        "soukaku": { tags: ["Ice", "Support", "Max Potential"], efficiency: "A+" },
+        "zhuyuan": { tags: ["Ether", "Attack"], efficiency: "A" },
+        "nangong": { tags: ["Physical", "Attack"], efficiency: "S" }
+    };
+
+    // Add tooltips to character cards
+    function initCharacterTooltips() {
+        const cards = document.querySelectorAll(".character-card");
+        cards.forEach((card) => {
+            const name = card.dataset.name;
+            if (characterData[name]) {
+                const data = characterData[name];
+                const tagsText = data.tags.join(", ");
+                const tooltipContent = `Tags: ${tagsText}\nEfficiency: ${data.efficiency}`;
+                card.setAttribute("data-tags", "true");
+                card.setAttribute("data-tooltip-content", tooltipContent);
+            }
+        });
+    }
+
+    initCharacterTooltips();
 </script>
 </body>
 </html>
