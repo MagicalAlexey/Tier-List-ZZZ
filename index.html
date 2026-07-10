@@ -177,11 +177,11 @@
         gap: 8px;
         border-radius: 6px;
         }
-        .role-dps {
+        .role-crit_dps {
         color: #ef5350;
         background: rgba(239, 83, 80, 0.1);
         }
-        .role-support-dps {
+        .role-anomaly_dps {
         color: #ff9800;
         background: rgba(255, 152, 0, 0.1);
         }
@@ -635,7 +635,7 @@
             <button class="filter-btn element-btn" data-filter="element" data-value="fire">
                 <div class="element-icon">
                     <img
-                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Fire.webp?raw=true"
+                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Wind.webp?raw=true"
                             alt="Fire"
                     />
                 </div>
@@ -653,6 +653,14 @@
                     <img
                             src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ether.webp?raw=true"
                             alt="Ether"
+                    />
+                </div>
+            </button>
+            <button class="filter-btn element-btn" data-filter="element" data-value="wind">
+                <div class="element-icon">
+                    <img
+                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ether.webp?raw=true"
+                            alt="Wind"
                     />
                 </div>
             </button>
@@ -712,8 +720,8 @@
     </div>
     <!-- Role Headers (4 columns) -->
     <div class="role-headers">
-        <div class="role-header role-dps">DPS</div>
-        <div class="role-header role-support-dps">SUPPORT DPS</div>
+        <div class="role-header role-crit_dps">CRIT DPS</div>
+        <div class="role-header role-anomaly_dps">ANOMALY DPS</div>
         <div class="role-header role-stun">STUN</div>
         <div class="role-header role-support">SUPPORT</div>
     </div>
@@ -724,7 +732,7 @@
         <div class="tier-row tier-t0" data-tier="T0">
             <div class="tier-label">T0</div>
             <div class="tier-content">
-                <div class="role-column" data-role="dps">
+                <div class="role-column" data-role="crit_dps">
                     <div class="characters-grid">
                         <div
                                 class="character-card"
@@ -782,6 +790,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="role-column" data-role="anomaly_dps">
+                    <div class="characters-grid">
                         <div
                                 class="character-card"
                                 data-name="miyabi"
@@ -811,10 +823,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="role-column" data-role="support-dps">
-                    <div class="characters-grid">
                     </div>
                 </div>
                 <div class="role-column" data-role="stun">
@@ -1024,34 +1032,8 @@
         <div class="tier-row tier-t05" data-tier="T0.5">
             <div class="tier-label">T0.5</div>
             <div class="tier-content">
-                <div class="role-column" data-role="dps">
-                    <div class="characters-grid"></div>
+                <div class="role-column" data-role="crit_dps">
                     <div class="characters-grid">
-                        <div
-                                class="character-card"
-                                data-name="alice"
-                                data-rarity="S"
-                                data-element="physical"
-                                data-specialization="anomaly"
-                        >
-                            <div class="character-image rarity-S">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Alice_Thymefield_Icon.webp?raw=true"
-                                />
-                                <div class="element-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Physical.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="spec-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Anomaly.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="badge-container">
-                                </div>
-                            </div>
-                        </div>
                         <div
                                 class="character-card"
                                 data-name="sanby"
@@ -1210,30 +1192,27 @@
                         </div>
                     </div>
                 </div>
-                <div class="role-column" data-role="support-dps">
+                <div class="role-column" data-role="anomaly_dps">
                     <div class="characters-grid">
                         <div
                                 class="character-card"
-                                data-name="orphie_and_magus"
+                                data-name="alice"
                                 data-rarity="S"
-                                data-element="fire"
-                                data-specialization="attack"
+                                data-element="physical"
+                                data-specialization="anomaly"
                         >
                             <div class="character-image rarity-S">
                                 <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Orphie_Magnusson_and_Magus_Icon.webp?raw=true"
-                                        alt="Orphie_And_Magus"
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Alice_Thymefield_Icon.webp?raw=true"
                                 />
                                 <div class="element-icon-small">
                                     <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Fire.webp?raw=true"
-                                            alt="Fire"
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Physical.webp?raw=true"
                                     />
                                 </div>
                                 <div class="spec-icon-small">
                                     <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
-                                            alt="Attack"
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Anomaly.webp?raw=true"
                                     />
                                 </div>
                                 <div class="badge-container">
@@ -1299,24 +1278,6 @@
                                 data-element="electric"
                                 data-specialization="anomaly"
                         >
-                            <div class="character-image rarity-S">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Tsukishiro_Yanagi_Icon.webp?raw=true"
-                                />
-                                <div class="element-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Electric.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="spec-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Anomaly.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="badge-container">
-                                    <div class="eye-icon" data-tooltip="Tag: Review">👁</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1463,84 +1424,8 @@
         <div class="tier-row tier-t1" data-tier="T1">
             <div class="tier-label">T1</div>
             <div class="tier-content">
-                <div class="role-column" data-role="dps">
+                <div class="role-column" data-role="crit_dps">
                     <div class="characters-grid">
-                        <div
-                                class="character-card"
-                                data-name="ellen"
-                                data-rarity="S"
-                                data-element="ice"
-                                data-specialization="attack"
-                        >
-                            <div class="character-image rarity-S">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Ellen_Joe_Icon.webp?raw=true"
-                                />
-                                <div class="element-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ice.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="spec-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="badge-container">
-                                    <div class="rank-badge" data-tooltip="Max. potential">P6</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                                class="character-card"
-                                data-name="hugo"
-                                data-rarity="S"
-                                data-element="ice"
-                                data-specialization="attack"
-                        >
-                            <div class="character-image rarity-S">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Hugo_Vlad_Icon.webp?raw=true"
-                                />
-                                <div class="element-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ice.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="spec-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="badge-container">
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                                class="character-card"
-                                data-name="manato"
-                                data-rarity="A"
-                                data-element="fire"
-                                data-specialization="decay"
-                        >
-                            <div class="character-image rarity-A">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Komano_Manato_Icon.webp?raw=true"
-                                />
-                                <div class="element-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Fire.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="spec-icon-small">
-                                    <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Rupture.webp?raw=true"
-                                    />
-                                </div>
-                                <div class="badge-container">
-                                </div>
-                            </div>
-                        </div>
                         <div
                                 class="character-card"
                                 data-name="soldier11"
@@ -1569,29 +1454,60 @@
                         </div>
                         <div
                                 class="character-card"
-                                data-name="yanagi"
+                                data-name="orphie_and_magus"
                                 data-rarity="S"
-                                data-element="electric"
-                                data-specialization="anomaly"
+                                data-element="fire"
+                                data-specialization="attack"
                         >
                             <div class="character-image rarity-S">
                                 <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Tsukishiro_Yanagi_Icon.webp?raw=true"
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Orphie_Magnusson_and_Magus_Icon.webp?raw=true"
+                                        alt="Orphie_And_Magus"
                                 />
                                 <div class="element-icon-small">
                                     <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Electric.webp?raw=true"
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Fire.webp?raw=true"
+                                            alt="Fire"
                                     />
                                 </div>
                                 <div class="spec-icon-small">
                                     <img
-                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Anomaly.webp?raw=true"
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
+                                            alt="Attack"
                                     />
                                 </div>
                                 <div class="badge-container">
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="role-column" data-role="anomaly_dps">
+                    <div class="characters-grid"><div
+                            class="character-card"
+                            data-name="yanagi"
+                            data-rarity="S"
+                            data-element="electric"
+                            data-specialization="anomaly"
+                    >
+                        <div class="character-image rarity-S">
+                            <img
+                                    src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Tsukishiro_Yanagi_Icon.webp?raw=true"
+                            />
+                            <div class="element-icon-small">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Electric.webp?raw=true"
+                                />
+                            </div>
+                            <div class="spec-icon-small">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Anomaly.webp?raw=true"
+                                />
+                            </div>
+                            <div class="badge-container">
+                            </div>
+                        </div>
+                    </div>
                         <div
                                 class="character-card"
                                 data-name="jane"
@@ -1643,9 +1559,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="role-column" data-role="support-dps">
-                    <div class="characters-grid"></div>
                 </div>
                 <div class="role-column" data-role="stun">
                     <div class="characters-grid">
@@ -1705,7 +1618,123 @@
                     </div>
                 </div>
                 <div class="role-column" data-role="support">
-                    <div class="characters-grid">
+                </div>
+            </div>
+        </div>
+        <div class="tier-row tier-t15" data-tier="T1.5">
+            <div class="tier-label">T1.5</div>
+            <div class="tier-content">
+                <div class="role-column" data-role="crit_dps">
+                    <div class="characters-grid"><div
+                            class="character-card"
+                            data-name="ellen"
+                            data-rarity="S"
+                            data-element="ice"
+                            data-specialization="attack"
+                    >
+                        <div class="character-image rarity-S">
+                            <img
+                                    src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Ellen_Joe_Icon.webp?raw=true"
+                            />
+                            <div class="element-icon-small">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ice.webp?raw=true"
+                                />
+                            </div>
+                            <div class="spec-icon-small">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
+                                />
+                            </div>
+                            <div class="badge-container">
+                                <div class="rank-badge" data-tooltip="Max. potential">P6</div>
+                            </div>
+                        </div>
+                    </div>
+                        <div
+                                class="character-card"
+                                data-name="hugo"
+                                data-rarity="S"
+                                data-element="ice"
+                                data-specialization="attack"
+                        >
+                            <div class="character-image rarity-S">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Hugo_Vlad_Icon.webp?raw=true"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ice.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="badge-container">
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="character-card"
+                                data-name="manato"
+                                data-rarity="A"
+                                data-element="fire"
+                                data-specialization="decay"
+                        >
+                            <div class="character-image rarity-A">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Komano_Manato_Icon.webp?raw=true"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Fire.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Rupture.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="badge-container">
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                                class="character-card"
+                                data-name="zhuyuan"
+                                data-rarity="S"
+                                data-element="ether"
+                                data-specialization="attack"
+                        >
+                            <div class="character-image rarity-S">
+                                <img
+                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Zhu_Yuan_Icon.webp?raw=true"
+                                />
+                                <div class="element-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ether.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="spec-icon-small">
+                                    <img
+                                            src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
+                                    />
+                                </div>
+                                <div class="badge-container">
+                                </div>
+                            </div>
+                        </div></div>
+                </div>
+                <div class="role-column" data-role="anomaly_dps">
+                    <div class="characters-grid"></div>
+                </div>
+                <div class="role-column" data-role="stun">
+                    <div class="characters-grid"></div>
+                </div>
+                <div class="role-column" data-role="support">
+                    <div class="characters-grid"><div class="characters-grid">
                         <div
                                 class="character-card"
                                 data-name="soukaku"
@@ -1728,53 +1757,10 @@
                                     />
                                 </div>
                                 <div class="badge-container">
-                                    <div class="rank-badge" data-tooltip="Max. potential">P6</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tier-row tier-t15" data-tier="T1.5">
-            <div class="tier-label">T1.5</div>
-            <div class="tier-content">
-                <div class="role-column" data-role="dps">
-                    <div
-                            class="character-card"
-                            data-name="zhuyuan"
-                            data-rarity="S"
-                            data-element="ether"
-                            data-specialization="attack"
-                    >
-                        <div class="character-image rarity-S">
-                            <img
-                                    src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/chars/Agent_Zhu_Yuan_Icon.webp?raw=true"
-                            />
-                            <div class="element-icon-small">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/element/Icon_Ether.webp?raw=true"
-                                />
-                            </div>
-                            <div class="spec-icon-small">
-                                <img
-                                        src="https://github.com/MagicalAlexey/Tier-List-ZZZ/blob/main/assets/spec/Icon_Attack.webp?raw=true"
-                                />
-                            </div>
-                            <div class="badge-container">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="characters-grid"></div>
-                </div>
-                <div class="role-column" data-role="support-dps">
-                    <div class="characters-grid"></div>
-                </div>
-                <div class="role-column" data-role="stun">
-                    <div class="characters-grid"></div>
-                </div>
-                <div class="role-column" data-role="support">
-                    <div class="characters-grid"></div>
+                    </div></div>
                 </div>
             </div>
         </div>
@@ -1786,10 +1772,10 @@
         <div class="tier-row tier-t2" data-tier="T2">
             <div class="tier-label">T2</div>
             <div class="tier-content">
-                <div class="role-column" data-role="dps">
+                <div class="role-column" data-role="crit_dps">
                     <div class="characters-grid"></div>
                 </div>
-                <div class="role-column" data-role="support-dps">
+                <div class="role-column" data-role="anomaly_dps">
                     <div class="characters-grid"></div>
                 </div>
                 <div class="role-column" data-role="stun">
@@ -1803,10 +1789,10 @@
         <div class="tier-row tier-t3" data-tier="T3">
             <div class="tier-label">T3</div>
             <div class="tier-content">
-                <div class="role-column" data-role="dps">
+                <div class="role-column" data-role="crit_dps">
                     <div class="characters-grid"></div>
                 </div>
-                <div class="role-column" data-role="support-dps">
+                <div class="role-column" data-role="anomaly_dps">
                     <div class="characters-grid"></div>
                 </div>
                 <div class="role-column" data-role="stun">
